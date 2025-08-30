@@ -31,7 +31,7 @@ const Login = () => {
       e.preventDefault()
       console.log(input);
       
-      try {
+      try { 
         dispatch(setLoading(true));
         const res = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
           headers: {
