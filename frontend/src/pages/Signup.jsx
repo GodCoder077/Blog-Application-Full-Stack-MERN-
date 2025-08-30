@@ -139,5 +139,3 @@ const Signup = () => {
 }
 
 export default Signup
-
-heyyy
