@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/logo.png'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
-import { Search } from 'lucide-react'
+import { Search, Cloud, CreditCard, Keyboard, LifeBuoy, LogOut, Mail, MessageSquare, Plus, PlusCircle, Settings, User, UserPlus, Users, } from 'lucide-react'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { Avatar } from './ui/avatar'
 import { AvatarFallback, AvatarImage } from './ui/avatar'
@@ -12,17 +12,31 @@ import { toggleTheme } from '../redux/themeSlice'
 import { toast } from 'sonner'
 import axios from 'axios'
 import { setUser } from '../redux/authSlice'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger,
+} from "../components/ui/dropdown-menu"
 
 const Navbar = () => {
-    const {user} = useSelector(store => store.auth);
-    const {theme} = useSelector(store => store.theme)
+    const { user } = useSelector(store => store.auth);
+    const { theme } = useSelector(store => store.theme)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const logoutHandler = async (e) => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/v1/user/logout`, {withCredentials: true})
-            if(res.data.success){
+            const res = await axios.get(`http://localhost:8000/api/v1/user/logout`, { withCredentials: true })
+            if (res.data.success) {
                 navigate('/login')
                 dispatch(setUser(null))
                 toast.success(res.data.message)
@@ -66,15 +80,100 @@ const Navbar = () => {
                             {
                                 theme === 'light' ? <FaMoon /> : <FaSun />
                             }
-                            </Button>
+                        </Button>
                         {
                             user ? <div className='ml-7 flex gap-3 items-center'>
-                                <Avatar>
-                                    {/* <AvatarImage src={user.profilePicture} alt={user.name} />
+
+
+
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Avatar className="cursor-pointer">
+                                            {/* <AvatarImage src={user.profilePicture} alt={user.name} />
                                     <AvatarFallback>{user.name}</AvatarFallback> */}
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
+                                            <AvatarImage src="https://github.com/shadcn.png" />
+                                            <AvatarFallback>CN</AvatarFallback>
+                                        </Avatar>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent className="w-56" align="start">
+                                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuItem>
+                                                <User />
+                                                <span>Profile</span>
+                                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem>
+                                                <CreditCard />
+                                                <span>Billing</span>
+                                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem>
+                                                <Settings />
+                                                <span>Settings</span>
+                                                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem>
+                                                <Keyboard />
+                                                <span>Keyboard shortcuts</span>
+                                                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuItem>
+                                                <Users />
+                                                <span>Team</span>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuSub>
+                                                <DropdownMenuSubTrigger>
+                                                    <UserPlus />
+                                                    <span>Invite users</span>
+                                                </DropdownMenuSubTrigger>
+                                                <DropdownMenuPortal>
+                                                    <DropdownMenuSubContent>
+                                                        <DropdownMenuItem>
+                                                            <Mail />
+                                                            <span>Email</span>
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuItem>
+                                                            <MessageSquare />
+                                                            <span>Message</span>
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuSeparator />
+                                                        <DropdownMenuItem>
+                                                            <PlusCircle />
+                                                            <span>More...</span>
+                                                        </DropdownMenuItem>
+                                                    </DropdownMenuSubContent>
+                                                </DropdownMenuPortal>
+                                            </DropdownMenuSub>
+                                            <DropdownMenuItem>
+                                                <Plus />
+                                                <span>New Team</span>
+                                                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem>
+                                            <span>GitHub</span>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            <LifeBuoy />
+                                            <span>Support</span>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem disabled>
+                                            <Cloud />
+                                            <span>API</span>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem>
+                                            <LogOut />
+                                            <span>Log out</span>
+                                            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                                 <Button onClick={logoutHandler} className='cursor-pointer'>Logout</Button>
                             </div> : <div className='ml-7 md:flex gap-2'>
                                 <Link to={'/login'}><Button className='cursor-pointer'>Login</Button></Link>
