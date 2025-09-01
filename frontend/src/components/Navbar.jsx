@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/logo.png'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
-import { Search, Cloud, CreditCard, Keyboard, LifeBuoy, LogOut, Mail, MessageSquare, Plus, PlusCircle, Settings, User, UserPlus, Users, } from 'lucide-react'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { Search, Cloud, CreditCard, Keyboard, LifeBuoy, LogOut, Mail, MessageSquare, Plus, PlusCircle, Settings, User, UserPlus, Users, ChartColumnBig, } from 'lucide-react'
+import { FaMoon, FaRegEdit, FaSun } from 'react-icons/fa'
 import { Avatar } from './ui/avatar'
 import { AvatarFallback, AvatarImage } from './ui/avatar'
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,6 +26,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu"
+import { LiaCommentSolid } from "react-icons/lia";
 
 const Navbar = () => {
     const { user } = useSelector(store => store.auth);
@@ -104,68 +105,21 @@ const Navbar = () => {
                                                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem>
-                                                <CreditCard />
-                                                <span>Billing</span>
+                                                <ChartColumnBig />
+                                                <span>Your Blogs</span>
                                                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem>
-                                                <Settings />
-                                                <span>Settings</span>
-                                                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                                                <LiaCommentSolid />
+                                                <span>Comments</span>
+                                                <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem>
-                                                <Keyboard />
-                                                <span>Keyboard shortcuts</span>
-                                                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                                                <FaRegEdit />
+                                                <span>Write Blog</span>
+                                                <DropdownMenuShortcut>⌘W</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                         </DropdownMenuGroup>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuGroup>
-                                            <DropdownMenuItem>
-                                                <Users />
-                                                <span>Team</span>
-                                            </DropdownMenuItem>
-                                            <DropdownMenuSub>
-                                                <DropdownMenuSubTrigger>
-                                                    <UserPlus />
-                                                    <span>Invite users</span>
-                                                </DropdownMenuSubTrigger>
-                                                <DropdownMenuPortal>
-                                                    <DropdownMenuSubContent>
-                                                        <DropdownMenuItem>
-                                                            <Mail />
-                                                            <span>Email</span>
-                                                        </DropdownMenuItem>
-                                                        <DropdownMenuItem>
-                                                            <MessageSquare />
-                                                            <span>Message</span>
-                                                        </DropdownMenuItem>
-                                                        <DropdownMenuSeparator />
-                                                        <DropdownMenuItem>
-                                                            <PlusCircle />
-                                                            <span>More...</span>
-                                                        </DropdownMenuItem>
-                                                    </DropdownMenuSubContent>
-                                                </DropdownMenuPortal>
-                                            </DropdownMenuSub>
-                                            <DropdownMenuItem>
-                                                <Plus />
-                                                <span>New Team</span>
-                                                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                                            </DropdownMenuItem>
-                                        </DropdownMenuGroup>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem>
-                                            <span>GitHub</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <LifeBuoy />
-                                            <span>Support</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem disabled>
-                                            <Cloud />
-                                            <span>API</span>
-                                        </DropdownMenuItem>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem>
                                             <LogOut />
