@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Logo from '../assets/logo.png'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from '../redux/themeSlice'
 import { toast } from 'sonner'
 import axios from 'axios'
+import userLogo from '../assets/user.jpg'
 import { setUser } from '../redux/authSlice'
 import {
     DropdownMenu,
@@ -92,36 +93,37 @@ const Navbar = () => {
                                         <Avatar className="cursor-pointer">
                                             {/* <AvatarImage src={user.profilePicture} alt={user.name} />
                                     <AvatarFallback>{user.name}</AvatarFallback> */}
-                                            <AvatarImage src="https://github.com/shadcn.png" />
-                                            <AvatarFallback>CN</AvatarFallback>
+                                            <AvatarImage src={user.photoUrl || userLogo} />
+                                            <AvatarFallback>{user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
+                                            </AvatarFallback>
                                         </Avatar>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent className="w-56" align="start">
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-56" align="start">
                                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                         <DropdownMenuGroup>
-                                            <DropdownMenuItem>
+                                            <DropdownMenuItem className='cursor-pointer' onClick={() => navigate('/dashboard/profile')}>
                                                 <User />
                                                 <span>Profile</span>
                                                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem>
+                                            <DropdownMenuItem className='cursor-pointer' onClick={() => navigate('/dashboard/your-blog')}>
                                                 <ChartColumnBig />
                                                 <span>Your Blogs</span>
                                                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem>
+                                            <DropdownMenuItem className='cursor-pointer' onClick={() => navigate('/dashboard/comments')}>
                                                 <LiaCommentSolid />
                                                 <span>Comments</span>
                                                 <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem>
+                                            <DropdownMenuItem className='cursor-pointer' onClick={() => navigate('/dashboard/write-blog')}>
                                                 <FaRegEdit />
                                                 <span>Write Blog</span>
                                                 <DropdownMenuShortcut>⌘W</DropdownMenuShortcut>
                                             </DropdownMenuItem>
                                         </DropdownMenuGroup>
                                         <DropdownMenuSeparator />
-                                        <DropdownMenuItem>
+                                        <DropdownMenuItem className='cursor-pointer' onClick={logoutHandler}>
                                             <LogOut />
                                             <span>Log out</span>
                                             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
