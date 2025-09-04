@@ -3,6 +3,7 @@
 # Node modules
 node_modules/
 
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -17,11 +18,14 @@ pids
 *.pid.lock
 
 # Environment variables
+=======
+>>>>>>> 460ee87 (New Update)
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+<<<<<<< HEAD
 
 # Build outputs
 dist/
@@ -49,3 +53,15 @@ backend/node_modules/
 backend/build/
 backend/dist/
 backend/.env.local
+=======
+backend/.env
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+>>>>>>> 460ee87 (New Update)
