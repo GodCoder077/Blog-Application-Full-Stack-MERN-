@@ -98,7 +98,7 @@ const Profile = () => {
                             />
                         </Avatar>
 
-                        <h1 className='text-center font-semibold text-xl text-gray-700 dark:text-gray-300 my-3'> {user.occupation || "Mern Stack Developer"}</h1>
+                        <h1 className='text-center font-semibold text-xl text-gray-700 dark:text-gray-300 my-3'> {user.occupation || "----"}</h1>
                         <div className='flex gap-4 items-center'>
                             <Link><FaFacebook className='w-6 h-6 text-gray-800 dark:text-gray-300' /></Link>
                             <Link><FaLinkedin className='w-6 h-6 text-gray-800 dark:text-gray-300' /></Link>
