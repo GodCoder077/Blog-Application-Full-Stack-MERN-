@@ -80,12 +80,12 @@ const CreateBlog = () => {
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Category</SelectLabel>
-                  <SelectItem value="apple">Web Development</SelectItem>
-                  <SelectItem value="banana">Blogging</SelectItem>
-                  <SelectItem value="blueberry">Sustainabilty</SelectItem>
-                  <SelectItem value="grapes">Technology</SelectItem>
-                  <SelectItem value="gaming">Gaming</SelectItem>
-                  <SelectItem value="cooking">Cooking</SelectItem>
+                  <SelectItem value="Web Development">Web Development</SelectItem>
+                  <SelectItem value="Blogging">Blogging</SelectItem>
+                  <SelectItem value="Sustainabilty">Sustainabilty</SelectItem>
+                  <SelectItem value="Technology">Technology</SelectItem>
+                  <SelectItem value="Gaming">Gaming</SelectItem>
+                  <SelectItem value="Cooking">Cooking</SelectItem>
                   <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
                 </SelectGroup>
               </SelectContent>
